@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>John's Quizalator</title>
+		<link href="css/smooth/jquery-ui-1.10.3.custom.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="reset.css">
+		<link type="text/css" rel="stylesheet" href="main.css">
+		<script src="js/jquery-1.9.1.js"></script>
+		<script src="js/jquery-ui-1.10.3.custom.js"></script>
+		<script type="text/javascript" src="application.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="titleBox">
+				<h1 id='title'>Quizalator</h1>
+				<img src='quiz.png'>
+			</div>
+		</header>
+		<div id="content">
+			<h3 id="quizTitle"></h3>
+			<div id="questions">
+				<div id="questionNum"><h4></h4></div>
+				<p id="question"></p>
+				<form id="answerForm">
+					<ul id="answers">
+					</ul>
+				</form>
+				<h2 id="correctOrIncorrect">Correct!</h2>
+			</div>
+			<div id="navigator">
+				<div id="prev">
+					<a id="prevpic" href="#">Previous</a>
+				</div>
+				<div id="next">
+					<a id="nextpic" href="#">Next</a>
+				</div>
+			</div>
+			<div id="stats">
+				<div id="statsBox">
+					<div id="correctCounter">
+						<h2>Correct</h2>
+						<div class="correctArea">0</div>
+					</div>
+					<div id="incorrectCounter">
+						<h2>Incorrect</h2>
+						<div class="incorrectArea"><p>0</p></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
