@@ -4,7 +4,7 @@ function ColoradoFourteeners() {
 
 	var q1={
 		question:"How many peaks in Colorado are 14,000 feet high or higher?",
-		answers:["10","17","53 Mountains","54"],
+		answers:["10","17","53","54"],
 		correctAnswer:3,
 		userAnswer:0};
 	var q2={
@@ -96,8 +96,6 @@ $(document).ready(function() {
 	}
 
 	function clearForm() {
-		$('#questionNum h4').empty();
-		$('#question').empty();
 		$('#answers').empty();
 		$('#correctOrIncorrect').empty();
 	}
@@ -108,7 +106,16 @@ $(document).ready(function() {
 
 	// Record answer
 	$('#answers').on('change', 'input[type="radio"]', function(event) {
-		var ans = $(this).next().html().split(') ')[1];
+		var pickedAns = $(this).next().html().split(') ')[1];
+		var question = quiz.getQuestion(currentQ+1);
+		var correctAns = question.answers[question.correctAnswer-1];
+		if (correctAns === pickedAns) {
+			$('#correctOrIncorrect').addClass('correct');
+			$('#correctOrIncorrect').text('Correct!');
+		} else {
+			$('#correctOrIncorrect').removeClass('correct');
+			$('#correctOrIncorrect').text('Incorrect');
+		}
 	});
 
 	// Hook up the next button

@@ -66,8 +66,12 @@ header img {
 #correctOrIncorrect {
 	text-align:center;
 	margin-bottom:30px;
-	color:#60c933;
 	min-height: 54px;
+	color:#e34d1b;
+}
+
+#correctOrIncorrect.correct {
+	color:#60c933;
 }
 
 #navigator {
