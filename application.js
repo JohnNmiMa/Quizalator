@@ -115,8 +115,10 @@ $(document).ready(function() {
 		// Display the possible answers
 		var htmlText = "";
 		var question = questions[qNum];
+		var index = 0;
 		for (var ans in question.answers) {
-			htmlText += '<li><input type="radio" name="answer"><label for="answer">'+
+			index++;
+			htmlText += '<li><input id="answer'+index+'" type="radio" name="answer"><label for="answer'+index+'">'+
 						preLetters[ans]+' '+
 			            question.answers[ans]+'</label></li>'
 		}
