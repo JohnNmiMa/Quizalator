@@ -33,7 +33,12 @@ function ColoradoFourteeners() {
 		answers:["Little Bear Peak","Longs Peak","Capitol Peak"],
 		correctAnswer:3,
 		userAnswer:0};
-	var quizQuestions = [q1,q2,q3,q4,q5,q6];
+	var q7={
+		question:"Which 14er is John's favorite?",
+		answers:["North Maroon Peak","Longs Peak","Mt. Yale"],
+		correctAnswer:2,
+		userAnswer:0};
+	var quizQuestions = [q1,q2,q3,q4,q5,q6,q7];
 
 	this.getQuizName = function() {
 		return quizName;
@@ -54,6 +59,7 @@ $(document).ready(function() {
 	var name = quiz.getQuizName();
 	var questions = {};
 	var numQuestions = 0;
+	var numCorrect = 0, numIncorrect = 0;
 	var currentQ = 0;
 	var preLetters = ['A)','B)','C)','D)','E)','F)','G)','H)','I)','J)','K)','L)','M)','N)',
                       'O)','P)','Q)','R)','S)','T)','U)','V)','W)','X)','Y)','Z)'];
@@ -67,6 +73,28 @@ $(document).ready(function() {
 
 	// Hide the 'prev' button
 	$('#prev').css('visibility', 'hidden');
+
+	// Display the first question
+	showQuestion(0);
+
+	function updateForm(qNum) {
+		$('#answers').fadeOut('slow', function() { // Use the function to make sure the fadeOut is
+			clearForm();                           // done before we move on to clearing and showing
+			showForm(qNum);
+		});
+	}
+
+	function clearForm() {
+		$('#answers').empty();
+		$('#correctOrIncorrect').empty();
+	}
+
+	function showForm(qNum) {
+		showQuestion(qNum);
+		$('#answers').show(100, function() { // Use the function to make sure the fadeIn is
+			disableFormIfNecessary();             // done before we possibly disable the form
+		});
+	}
 
 	function showQuestion(qNum) {
 		// Display the question header
@@ -95,38 +123,59 @@ $(document).ready(function() {
 		$(htmlText).appendTo('#answers');
 	}
 
-	function updateForm(qNum) {
-		$('#answers').fadeOut('slow', function() {
-			clearForm();
-			showForm(qNum);
-		});
-	}
+	function disableFormIfNecessary() {
+		// Disable if the user already picked an answer and then show their answer
+		var question = quiz.getQuestion(currentQ+1);
+		if (question.userAnswer > 0) {
+			$('#answerForm input[type="radio"]').attr('disabled',true);
+			if (question.userAnswer == question.correctAnswer) {
+				$('#correctOrIncorrect').addClass('correct');
+				$('#correctOrIncorrect').text('Correct!');
+			} else {
+				$('#correctOrIncorrect').removeClass('correct');
+				$('#correctOrIncorrect').text('Incorrect');
+			}
 
-	function clearForm() {
-		$('#answers').empty();
-		$('#correctOrIncorrect').empty();
+			$('#answerForm input[type="radio"]').each(function(index, elem) {
+				var  dataIndex = index+1;
+				if (dataIndex == question.userAnswer) {
+					$(elem).prop('checked',true);
+				}
+			});
+		}
 	}
-
-	function showForm(qNum) {
-		showQuestion(qNum);
-		$('#answers').fadeIn('fast');
-	}
-
-	// Display the first question
-	showQuestion(0);
 
 	// Record answer
-	$('#answers').on('change', 'input[type="radio"]', function(event) {
+	$('#answerForm').on('change', 'input[type="radio"]', function(event) {
 		var pickedAns = $(this).next().html().split(') ')[1];
 		var question = quiz.getQuestion(currentQ+1);
-		var correctAns = question.answers[question.correctAnswer-1];
-		if (correctAns === pickedAns) {
+
+		// Display if correct or incorrect
+		for (var i in question.answers) {
+			var ans = question.answers[i];
+			if (pickedAns === question.answers[i]) {
+				question.userAnswer = Number(i)+1;
+				break;
+			}
+		}
+
+		// Figure out if the user picked the correct answer
+		if (question.userAnswer == question.correctAnswer) {
 			$('#correctOrIncorrect').addClass('correct');
 			$('#correctOrIncorrect').text('Correct!');
+			numCorrect++;
 		} else {
 			$('#correctOrIncorrect').removeClass('correct');
 			$('#correctOrIncorrect').text('Incorrect');
+			numIncorrect++;
 		}
+
+		// Disable form so the user can't change answer
+		$('#answerForm input[type="radio"]').attr('disabled',true);
+
+		// Update the stats
+		$('#statsBox .correctArea').text(numCorrect);
+		$('#statsBox .incorrectArea').text(numIncorrect);
 	});
 
 	// Hook up the next button

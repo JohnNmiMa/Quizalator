@@ -8,22 +8,22 @@ header {
 	padding: 2rem;
 }
 
-header .titleBox {
-	position:relative;
-	height:30px;
-}
+	header .titleBox {
+		position:relative;
+		height:30px;
+	}
 
-header #title {
-	float:left;
-}
+	header #title {
+		float:left;
+	}
 
-header img {
-	float:left;
-	height:27px;
-	width:27px;
-	padding-top:2px;
-	margin-left:5px;
-}
+	header img {
+		float:left;
+		height:27px;
+		width:27px;
+		padding-top:2px;
+		margin-left:5px;
+	}
 
 #content {
 	max-width: 800px;
@@ -31,127 +31,131 @@ header img {
 	padding: 2rem;
 }
 
-#quizTitle {
-	margin-bottom: 35px;
-}
-
-#questions {
-	margin-right:30px;
-	margin-bottom:30px;
-	border-bottom:1px solid #ccc;
-}
-
-#questionNum {
-	position:relative;
-	margin-bottom: 10px;
-	padding: 9px 20px 5px 20px;
-	background: linear-gradient(to bottom, #fff, #efefef);
-	border: 1px solid #d0d2d2;
-}
-
-#question {
-	margin: 0 0 20px 20px;
-	font-size:.95em;
-}
-
-#answers {
-	margin: 0 0 30px 20px;
-	font-size:.95em;
-}
-
-#answers li {
-	margin-bottom:8px;
-}
-
-#correctOrIncorrect {
-	text-align:center;
-	margin-bottom:30px;
-	min-height: 54px;
-	color:#e34d1b;
-}
-
-#correctOrIncorrect.correct {
-	color:#60c933;
-}
-
-#navigator {
-	position:relative;
-	margin-right:30px;
-	margin-bottom:30px;
-	height:30px;
-}
-
-#navigator #prev {
-	position:absolute;
-	left:0;
-}
-
-#navigator #prevpic {
-	float:left;
-	background: url(prev.gif) center left no-repeat;
-	line-height:26px;
-	padding:0 5px 0 35px;
-	text-decoration: none;
-}
-
-#navigator #prevpic:hover {
-	background: url(prev_hover.gif) center left no-repeat;
-}
-
-#navigator #next {
-	position:absolute;
-	right:0;
-}
-
-#navigator #nextpic {
-	float:right;
-	background: url(next.gif) center right no-repeat;
-	line-height:26px;
-	padding:0 35px 0 5px;
-	text-decoration: none;
-}
-
-#navigator #nextpic:hover {
-	background: url(next_hover.gif) center right no-repeat;
-}
-
-#stats {
-	position:relative;
-	margin-right:30px;
-}
-
-	#statsBox {
-		text-align: center;
+	#quizTitle {
+		margin-bottom: 35px;
 	}
 
-		#statsBox #correctCounter, #statsBox #incorrectCounter {
-			display:inline-block;
-			width:105px;
-			margin:0 5px;
+	/* Where we present the questions and the answer form*/
+	#questions {
+		margin-right:30px;
+		margin-bottom:30px;
+		border-bottom:1px solid #ccc;
+	}
+
+		#questionNum {
+			position:relative;
+			margin-bottom: 10px;
+			padding: 9px 20px 5px 20px;
+			background: linear-gradient(to bottom, #fff, #efefef);
+			border: 1px solid #d0d2d2;
 		}
 
-		#statsBox #correctCounter div, #statsBox #incorrectCounter div {
-			padding:0 20px;
-			color:#fff;
-			padding: 15px 20px 15px 20px;
-			font-size:1.2em;
+		#question {
+			margin: 0 0 20px 20px;
+			font-size:.95em;
 		}
 
-			#statsBox #correctCounter h2 {
-				color:#60c933;
+		#answers {
+			margin: 0 0 30px 20px;
+			font-size:.95em;
+		}
+
+			#answers li {
+				margin-bottom:8px;
 			}
 
-			#statsBox #correctCounter .correctArea {
-				background:#60c933;
+		#correctOrIncorrect {
+			text-align:center;
+			line-height: 34px;
+			min-height: 34px;
+			margin-bottom:20px;
+			color:#e34d1b;
+		}
+
+		#correctOrIncorrect.correct {
+			color:#60c933;
+		}
+
+	/*Where we move from one question to the next*/
+	#navigator {
+		position:relative;
+		margin-right:30px;
+		margin-bottom:30px;
+		height:30px;
+	}
+
+		#navigator #prev {
+			position:absolute;
+			left:0;
+		}
+
+			#navigator #prevpic {
+				float:left;
+				background: url(prev.gif) center left no-repeat;
+				line-height:26px;
+				padding:0 5px 0 35px;
+				text-decoration: none;
 			}
 
-			#statsBox #incorrectCounter h2 {
-				color:#e34d1b;
+				#navigator #prevpic:hover {
+					background: url(prev_hover.gif) center left no-repeat;
+				}
+
+		#navigator #next {
+			position:absolute;
+			right:0;
+		}
+
+			#navigator #nextpic {
+				float:right;
+				background: url(next.gif) center right no-repeat;
+				line-height:26px;
+				padding:0 35px 0 5px;
+				text-decoration: none;
 			}
 
-			#statsBox #incorrectCounter .incorrectArea {
-				background:#e34d1b;
+				#navigator #nextpic:hover {
+					background: url(next_hover.gif) center right no-repeat;
+				}
+
+	/*Where we show how many answers were answered correctly or incorrectly*/
+	#stats {
+		position:relative;
+		margin-right:30px;
+	}
+
+		#statsBox {
+			text-align: center;
+		}
+
+			#statsBox #correctCounter, #statsBox #incorrectCounter {
+				display:inline-block;
+				width:105px;
+				margin:0 5px;
 			}
+
+			#statsBox #correctCounter div, #statsBox #incorrectCounter div {
+				padding:0 20px;
+				color:#fff;
+				padding: 15px 20px 15px 20px;
+				font-size:1.2em;
+			}
+
+				#statsBox #correctCounter h2 {
+					color:#60c933;
+				}
+
+				#statsBox #correctCounter .correctArea {
+					background:#60c933;
+				}
+
+				#statsBox #incorrectCounter h2 {
+					color:#e34d1b;
+				}
+
+				#statsBox #incorrectCounter .incorrectArea {
+					background:#e34d1b;
+				}
 
 /* Used to style the jQuery tooptip */
 .ui-tooltip {
