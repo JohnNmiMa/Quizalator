@@ -95,13 +95,24 @@ $(document).ready(function() {
 		$(htmlText).appendTo('#answers');
 	}
 
+	function updateForm(qNum) {
+		$('#answers').fadeOut('slow', function() {
+			clearForm();
+			showForm(qNum);
+		});
+	}
+
 	function clearForm() {
 		$('#answers').empty();
 		$('#correctOrIncorrect').empty();
 	}
 
+	function showForm(qNum) {
+		showQuestion(qNum);
+		$('#answers').fadeIn('fast');
+	}
+
 	// Display the first question
-	clearForm();
 	showQuestion(0);
 
 	// Record answer
@@ -120,14 +131,12 @@ $(document).ready(function() {
 
 	// Hook up the next button
 	$('#nextpic').click(function() {
-		clearForm();
-		showQuestion(++currentQ);
+		updateForm(++currentQ);
 	});
 
 	// Hook up the prev button
 	$('#prevpic').click(function() {
-		clearForm();
-		showQuestion(--currentQ);
+		updateForm(--currentQ);
 	});
 
 	// jQuery UI code for tooltips
