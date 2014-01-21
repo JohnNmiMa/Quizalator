@@ -129,7 +129,7 @@ $(document).ready(function() {
 		// Disable if the user already picked an answer and then show their answer
 		var question = quiz.getQuestion(currentQ+1);
 		if (question.userAnswer > 0) {
-			$('#answerForm input[type="radio"]').attr('disabled',true);
+			$('#answerForm input[type=radio]').attr('disabled',true);
 			if (question.userAnswer == question.correctAnswer) {
 				$('#correctOrIncorrect').addClass('correct');
 				$('#correctOrIncorrect').text('Correct!');
@@ -138,7 +138,7 @@ $(document).ready(function() {
 				$('#correctOrIncorrect').text('Incorrect');
 			}
 
-			$('#answerForm input[type="radio"]').each(function(index, elem) {
+			$('#answerForm input[type=radio]').each(function(index, elem) {
 				var  dataIndex = index+1;
 				if (dataIndex == question.userAnswer) {
 					$(elem).prop('checked',true);
@@ -148,7 +148,7 @@ $(document).ready(function() {
 	}
 
 	// Record answer
-	$('#answerForm').on('change', 'input[type="radio"]', function(event) {
+	$('#answerForm').on('change', 'input[type=radio]', function(event) {
 		var pickedAns = $(this).next().html().split(') ')[1];
 		var question = quiz.getQuestion(currentQ+1);
 
@@ -173,7 +173,7 @@ $(document).ready(function() {
 		}
 
 		// Disable form so the user can't change answer
-		$('#answerForm input[type="radio"]').attr('disabled',true);
+		$('#answerForm input[type=radio]').attr('disabled',true);
 
 		// Update the stats
 		$('#statsBox .correctArea').text(numCorrect);
